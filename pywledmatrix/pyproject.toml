@@ -1,0 +1,8 @@
+[project]
+name = "pywledmatrix"
+version = "1.0.0"
+description = "asdf"
+
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]

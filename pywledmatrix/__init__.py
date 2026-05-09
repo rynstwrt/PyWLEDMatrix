@@ -5,10 +5,11 @@ import numpy as np
 class Color:
     BLACK = [0, 0, 0]
     RED = [255, 0, 0]
-    ORANGE = [255, 100, 0]
+    ORANGE = [255, 96, 0]
     YELLOW = [255, 255, 0]
     GREEN = [0, 255, 0]
     BLUE = [0, 0, 255]
+    CYAN = [15, 223, 255]
     PURPLE = [255, 0, 255]
 
 
@@ -24,7 +25,7 @@ class Matrix:
         self.pixels = np.zeros(shape=(self.height, self.width, 3), dtype=int)
 
 
-    def connect(self, ip: str, port: int):
+    def connect(self, ip: str, port: int = 21324):
         self.ip = ip
         self.port = port
         self.client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
