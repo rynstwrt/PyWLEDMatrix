@@ -21,4 +21,4 @@ matrix.show()
 - `fill(color)`
 - `fill_row(row, color)`
 - `fill_col(col, color)`
-- `draw_rect(x, y, w, h, color)`
+- `draw_rect(x1, y1, x2, y2, color)`

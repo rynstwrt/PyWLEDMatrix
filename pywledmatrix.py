@@ -48,13 +48,8 @@ class Matrix:
         self.pixels[:, col] = color
 
 
-    def draw_rect(self, x: int, y: int, w: int, h: int, color: list):
-        x2 = x + w - 1
-        y2 = y + h - 1
-        print(x, y, x2, y2)
-
-        self.pixels[x, y] = color
-        self.pixels[x2, y2] = color
-
-        for row in self.pixels:
-            print(row)
+    def draw_rect(self, x1: int, y1: int, x2: int, y2: int, color: list):
+        for y in range(y1, y2 + 1):
+            for x in range(x1, x2 + 1):
+                if y == y1 or y == y2 or x == x1 or x == x2:
+                    self.pixels[y, x] = color
