@@ -1,9 +1,9 @@
 import socket
 import numpy as np
-from enum import Enum
 
 
-class Color(Enum):
+class Color:
+    BLACK = [0, 0, 0]
     RED = [255, 0, 0]
     ORANGE = [255, 100, 0]
     YELLOW = [255, 255, 0]
@@ -40,6 +40,10 @@ class Matrix:
             for col in row:
                 print(col, end=" ")
             print()
+
+
+    def clear(self):
+        self.fill([0, 0, 0])
 
 
     def set_pixel(self, x: int, y: int, color: list):

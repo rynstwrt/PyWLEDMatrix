@@ -17,8 +17,10 @@ matrix.show()
 ```
 
 ## Drawing Methods
+- `clear()`
 - `set_pixel(x, y, color)`
 - `fill(color)`
 - `fill_row(row, color)`
 - `fill_col(col, color)`
 - `draw_rect(x1, y1, x2, y2, color, solid)`
+- `draw_checkerboard(color, offset)`
