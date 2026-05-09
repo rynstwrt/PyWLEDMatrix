@@ -1,9 +1,19 @@
 import socket
 import numpy as np
+from enum import Enum
+
+
+class Color(Enum):
+    RED = [255, 0, 0]
+    ORANGE = [255, 100, 0]
+    YELLOW = [255, 255, 0]
+    GREEN = [0, 255, 0]
+    BLUE = [0, 0, 255]
+    PURPLE = [255, 0, 255]
 
 
 class Matrix:
-    def __init__(self, width, height):
+    def __init__(self, width: int, height: int):
         self.width = width
         self.height = height
 
@@ -14,7 +24,7 @@ class Matrix:
         self.pixels = np.zeros(shape=(self.height, self.width, 3), dtype=int)
 
 
-    def connect(self, ip, port):
+    def connect(self, ip: str, port: int):
         self.ip = ip
         self.port = port
         self.client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -32,19 +42,19 @@ class Matrix:
             print()
 
 
-    def set_pixel(self, x, y, color):
+    def set_pixel(self, x: int, y: int, color: list):
         self.pixels[y, x] = color
 
 
-    def fill(self, color):
+    def fill(self, color: list | Color):
         self.pixels = np.full(shape=(self.height, self.width, 3), fill_value=color)
 
 
-    def fill_row(self, row, color):
+    def fill_row(self, row: int, color: list):
         self.pixels[row, :] = color
 
 
-    def fill_col(self, col, color):
+    def fill_col(self, col: int, color: list):
         self.pixels[:, col] = color
 
 
@@ -56,3 +66,10 @@ class Matrix:
                 else:
                     if y == y1 or y == y2 or x == x1 or x == x2:
                         self.pixels[y, x] = color
+
+
+    def draw_checkerboard(self, color: list | Color, offset: bool = False):
+        for y in range(self.height):
+            for x in range(self.width):
+                if (x + 1 if offset else x) % 2 == y % 2:
+                    self.pixels[y, x] = color
